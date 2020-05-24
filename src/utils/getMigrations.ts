@@ -1,6 +1,7 @@
-import fs, { promises as fsProm } from 'fs';
+import fs from 'fs';
 import path from 'path';
 import semver from 'semver';
+import fsProm from './fsPromise';
 
 const filenameRegex = /^(.*)__(.*).ts$/;
 

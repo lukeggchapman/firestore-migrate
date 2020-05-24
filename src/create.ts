@@ -1,6 +1,7 @@
-import { promises as fsProm } from 'fs';
 import semver, { ReleaseType } from 'semver';
+import mkdirp from 'mkdirp';
 import getMigrations from './utils/getMigrations';
+import fsProm from './utils/fsPromise';
 
 interface CreateOptions {
   path: string;
@@ -40,7 +41,7 @@ export default async function create(
   const newVersion = semver.inc(prevVersion, release);
   const newMigration = `${path}/${newVersion}__${name}.ts`;
 
-  fsProm.mkdir(path, { recursive: true });
+  await mkdirp(path);
   fsProm.copyFile(`${__dirname}/template.ts`, newMigration);
 
   console.log(`New migration: ${newMigration}`);
