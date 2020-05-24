@@ -13,6 +13,9 @@
   "bin": {
     "firestore-migrate": "./bin/firestore-migrate"
   },
+  "engines": {
+    "node": ">=8.10.0"
+  },
   "dependencies": {
     "@google-cloud/firestore": "^3.8.0",
     "@types/semver": "^7.2.0",

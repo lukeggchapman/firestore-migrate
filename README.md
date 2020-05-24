@@ -46,6 +46,7 @@ npx firestore-migrate migrate --path [path]
 ```
 
 - `-p, --path [path]`: Defaults to `./migrations`
+- `-t, --to [to]`: Version to migrate up or down to. Updates to latest when not passed.
 
 ### Programmatically
 

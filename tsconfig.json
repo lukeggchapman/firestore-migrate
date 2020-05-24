@@ -2,9 +2,9 @@
   "include": ["src"],
   "exclude": ["src/template.ts"],
   "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
-    "lib": ["esnext"],
+    "target": "es2017",
+    "module": "commonjs",
+    "lib": ["es2020"],
     "importHelpers": true,
     "sourceMap": true,
     "rootDir": "./src",
