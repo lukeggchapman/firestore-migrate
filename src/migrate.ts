@@ -20,7 +20,7 @@ interface MigrationItem {
 export async function migrate({ path, to }: MigrateOptions) {
   console.log(`Running migrations....`);
 
-  if (!semver.valid(to)) {
+  if (to && !semver.valid(to)) {
     throw new Error('to options is not a valid semver version.');
   }
 
