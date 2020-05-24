@@ -1,6 +1,6 @@
 {
   "name": "firestore-migrate",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Package to manage firestore migrations",
   "main": "dist/migrate.js",
   "scripts": {
