@@ -6,7 +6,6 @@ import registerTypeScript from './utils/registerTypeScript';
 import semver from 'semver';
 
 interface MigrateOptions {
-  id?: string;
   path: string;
 }
 
