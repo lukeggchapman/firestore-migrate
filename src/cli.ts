@@ -9,6 +9,7 @@ program
 
 program
   .command('migrate')
+  .option('-t, --to <to>', 'Semver version to migrate to')
   .option('-p, --path <path>', 'Path to migration files', './migrations')
   .action(migrate);
 
