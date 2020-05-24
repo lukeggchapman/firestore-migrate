@@ -10,6 +10,8 @@ interface MigrateOptions {
   path: string;
   /* Version to migrate to, defaults to latest */
   to?: string;
+  /* Can pass in admin app if already initialised */
+  app?: admin.app.App;
 }
 
 interface MigrationItem {
@@ -17,14 +19,17 @@ interface MigrationItem {
   down: (firestore: Firestore) => void;
 }
 
-export async function migrate({ path, to }: MigrateOptions) {
+export async function migrate({
+  path,
+  to,
+  app = admin.initializeApp(),
+}: MigrateOptions) {
   console.log(`Running migrations....`);
 
   if (to && !semver.valid(to)) {
     throw new Error('to options is not a valid semver version.');
   }
 
-  const app = admin.initializeApp();
   const firestore = app.firestore();
   let migrations = await getMigrations(path);
   const store = new MigrationStore(firestore);

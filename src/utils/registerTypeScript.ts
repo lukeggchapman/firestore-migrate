@@ -1,6 +1,6 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import * as tsNode from 'ts-node';
+import fs from 'fs';
+import path from 'path';
+import tsNode from 'ts-node';
 
 /**
  * Gets require's supported extensions
@@ -17,10 +17,10 @@ export default function registerTypeScript() {
 
   const tsconfigPath = path.resolve(process.cwd(), 'tsconfig.json');
 
-  if (!fs.existsSync(tsconfigPath))
-    throw new Error(`No tsconfig exists in ${process.cwd()}`);
-
-  const tsconfig = require(tsconfigPath);
-
-  tsNode.register(tsconfig);
+  if (fs.existsSync(tsconfigPath)) {
+    tsNode.register(require(tsconfigPath));
+  } else {
+    console.warn('No tsconfig.json for migrations found.');
+    tsNode.register();
+  }
 }
