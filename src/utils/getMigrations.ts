@@ -20,7 +20,7 @@ export default async function getMigrations(dir: string) {
 
       return {
         version,
-        path: path.join(dir, filename),
+        path: path.resolve(dir, filename),
         description: path.basename(description, '.ts'),
       };
     })
