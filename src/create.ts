@@ -21,7 +21,7 @@ function isReleaseType(release: string): release is ReleaseType {
 }
 const nameRegex = /^[a-z0-9\-]*$/;
 
-export default async function create(
+export async function create(
   name: string,
   release: string,
   { path }: CreateOptions

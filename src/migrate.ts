@@ -17,7 +17,7 @@ interface MigrationItem {
   down: (firestore: Firestore) => void;
 }
 
-export default async function migrate({ path, to }: MigrateOptions) {
+export async function migrate({ path, to }: MigrateOptions) {
   console.log(`Running migrations....`);
 
   if (!semver.valid(to)) {

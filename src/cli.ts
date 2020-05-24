@@ -1,6 +1,6 @@
 import program from 'commander';
-import create from './create';
-import migrate from './migrate';
+import { create } from './create';
+import { migrate } from './migrate';
 
 program
   .command('create <name> <version>')

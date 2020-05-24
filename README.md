@@ -53,7 +53,7 @@ npx firestore-migrate migrate --path [path]
 Alternatively you can call migrate programmatically. This is useful for running in cloud functions where the env variables are already set for you.
 
 ```
-import migrate from 'firestore-migrate';
+import { migrate } from 'firestore-migrate';
 
 migrate({ path: './migrations' });
 ```
