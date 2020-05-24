@@ -1,0 +1,33 @@
+{
+  "name": "firestore-migrate",
+  "version": "0.0.1",
+  "description": "Package to manage firestore migrations",
+  "main": "dist/migrate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf dist && rollup -c && cp ./src/template.ts ./dist/template.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Luke Chapman",
+  "license": "ISC",
+  "bin": {
+    "firestore-migrate": "./bin/firestore-migrate"
+  },
+  "dependencies": {
+    "@google-cloud/firestore": "^3.8.0",
+    "@types/semver": "^7.2.0",
+    "commander": "^5.1.0",
+    "firebase-admin": "^8.12.1",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^4.1.2",
+    "@types/semver": "^7.2.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.10.8",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-preserve-shebangs": "^0.2.0"
+  }
+}
