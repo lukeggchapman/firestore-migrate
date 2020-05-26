@@ -10,7 +10,7 @@ class MigrationStore {
   }
 
   update(data: Migration) {
-    return this.getDocument().update(data);
+    return this.getDocument().set(data, { merge: true });
   }
 
   async get(): Promise<Migration | undefined> {
