@@ -1,5 +1,5 @@
 import { Firestore } from '@google-cloud/firestore';
-import admin from 'firebase-admin';
+import * as admin from 'firebase-admin';
 import MigrationStore from './utils/MigrationStore';
 import getMigrations from './utils/getMigrations';
 import registerTypeScript from './utils/registerTypeScript';
