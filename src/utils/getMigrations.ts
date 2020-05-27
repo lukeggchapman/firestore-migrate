@@ -5,7 +5,13 @@ import fsProm from './fsPromise';
 
 const filenameRegex = /^(.*)__(.*).ts$/;
 
-export default async function getMigrations(dir: string) {
+export interface Migration {
+  version: string;
+  path: string;
+  description: string;
+}
+
+export default async function getMigrations(dir: string): Promise<Migration[]> {
   try {
     await fsProm.access(dir, fs.constants.F_OK);
   } catch (e) {
