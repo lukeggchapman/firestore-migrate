@@ -24,7 +24,7 @@ function findPreviousVersion(version: string, migrations: Migration[]) {
     (migration) => migration.version === version
   );
 
-  return currentIndex < 1 ? migrations[currentIndex - 1].version : '0.0.0';
+  return currentIndex > 0 ? migrations[currentIndex - 1].version : '0.0.0';
 }
 
 export async function migrate({
