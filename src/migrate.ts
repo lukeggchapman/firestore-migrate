@@ -15,8 +15,8 @@ interface MigrateOptions {
 }
 
 type MigrateMethod =
-  | ((firestore: Firestore, app: admin.app.App) => void)
-  | ((firestore: Firestore) => void);
+  | ((firestore: Firestore, app: admin.app.App) => Promise<void>)
+  | ((firestore: Firestore) => Promise<void>);
 
 interface MigrationItem {
   up: MigrateMethod;
@@ -83,13 +83,13 @@ export async function migrate({
 
     try {
       log(`Migrating to ${version} - ${description}`);
-      migrationItem[direction](firestore, app);
+      await migrationItem[direction](firestore, app);
     } catch (e) {
       log(`Failed to update to ${version} - ${description}`);
       throw e;
     }
 
-    store.update({ version: newVersion });
+    await store.update({ version: newVersion });
     currentVersion = version;
   }
 
