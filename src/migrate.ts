@@ -14,9 +14,13 @@ interface MigrateOptions {
   app?: admin.app.App;
 }
 
+type MigrateMethod =
+  | ((firestore: Firestore, app: admin.app.App) => void)
+  | ((firestore: Firestore) => void);
+
 interface MigrationItem {
-  up: (firestore: Firestore) => void;
-  down: (firestore: Firestore) => void;
+  up: MigrateMethod;
+  down: MigrateMethod;
 }
 
 function findPreviousVersion(version: string, migrations: Migration[]) {
@@ -79,7 +83,7 @@ export async function migrate({
 
     try {
       log(`Migrating to ${version} - ${description}`);
-      migrationItem[direction](firestore);
+      migrationItem[direction](firestore, app);
     } catch (e) {
       log(`Failed to update to ${version} - ${description}`);
       throw e;
